@@ -44,5 +44,18 @@ class CustomDelimiterExtractorTest {
 
             assertThat(extractor.extractCustomDelimiter(value)).isEqualTo(expected);
         }
+
+        @ParameterizedTest
+        @CsvSource({
+                "'//;\\n1,2,3', '1,2,3'",
+                "'//!@#\\n1,2','1,2'",
+                "'//:D\\n1,2,3','1,2,3'",
+                "'///;;\\\\n',''"
+        })
+        @DisplayName("커스텀 구분자를 제외한 표현식을 추출하여 반환한다.")
+        public void expressionExtractingTest(String value, String expected) {
+
+            assertThat(extractor.extractExpression(value)).isEqualTo(expected);
+        }
     }
 }
