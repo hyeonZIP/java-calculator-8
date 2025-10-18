@@ -22,5 +22,6 @@ public class CalculatorController {
         outputView.printIntroMessage();
         String userInput = inputView.getUserInput();
         int result = calculatorService.getResult(userInput);
+        outputView.printAddResult(result);
     }
 }
