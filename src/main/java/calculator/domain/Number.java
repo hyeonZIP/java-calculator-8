@@ -18,6 +18,11 @@ public class Number {
         return new Number(userInputSplit);
     }
 
+    public int getValue() {
+
+        return value;
+    }
+
     private static void validateNumber(String value) {
 
         validateNumberIsNotNull(value);

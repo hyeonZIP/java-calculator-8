@@ -23,4 +23,16 @@ public class Numbers {
 
         return new Numbers(numbers);
     }
+
+    public int addAll() {
+
+        int result = 0;
+
+        for (Number number : numbers) {
+
+            result += number.getValue();
+        }
+
+        return result;
+    }
 }
