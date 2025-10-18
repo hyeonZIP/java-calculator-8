@@ -3,7 +3,7 @@ package calculator.domain;
 public class CustomDelimiterExtractor {
 
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
-    private static final String CUSTOM_DELIMITER_SUFFIX = "\n";
+    private static final String CUSTOM_DELIMITER_SUFFIX = "\\n";
 
     private CustomDelimiterExtractor() {
     }
