@@ -1,5 +1,6 @@
 package calculator.service;
 
+import calculator.domain.Numbers;
 import calculator.domain.ParsedInput;
 
 public class CalculatorService {
@@ -11,6 +12,8 @@ public class CalculatorService {
         ParsedInput parsedInput = ParsedInput.of(userInput);
 
         String[] userInputSplit = parsedInput.split();
+
+        Numbers parsedUserInput = Numbers.of(userInputSplit);
 
         return result;
     }
