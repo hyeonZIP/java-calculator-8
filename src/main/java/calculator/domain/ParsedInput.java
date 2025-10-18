@@ -17,13 +17,15 @@ public class ParsedInput {
 
         if (extractor.hasCustomDelimiterFormat(userInput)) {
 
+            // 기본 구분자와 커스텀 구분자가 포함된 객체 생성
             return createForCustomDelimiter(userInput, extractor);
         }
 
+        // 기본 구분자로만 이루어진 객체 생성
         return createDefault(userInput);
     }
 
-    public String[] split(){
+    public String[] split() {
 
         return delimiters.split(expression);
     }
@@ -37,10 +39,13 @@ public class ParsedInput {
 
     private static ParsedInput createForCustomDelimiter(String userInput, CustomDelimiterExtractor extractor) {
 
+        // 사용자 입력에서 커스텀 구분자 추출
         String customDelimiter = extractor.extractCustomDelimiter(userInput);
 
+        // 커스텀 구분자가 포함된 구분자 리스트 반환
         Delimiters delimiters = Delimiters.ofCustom(customDelimiter);
 
+        // 사용자 입력에서 커스텀 구분자 부분을 제외하여 표현식 추출
         String expression = extractor.extractExpression(userInput);
 
         return new ParsedInput(expression, delimiters);

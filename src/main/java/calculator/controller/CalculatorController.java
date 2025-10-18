@@ -19,9 +19,16 @@ public class CalculatorController {
 
     public void run() {
 
+        // 인트로 메시지 출력
         outputView.printIntroMessage();
+
+        // 사용자 입력 받기
         String userInput = inputView.getUserInput();
+
+        // 덧셈 결과 받기
         int result = calculatorService.getResult(userInput);
+
+        // 덧셈 결과 출력
         outputView.printAddResult(result);
     }
 }
