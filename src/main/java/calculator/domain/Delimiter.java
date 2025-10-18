@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import java.util.regex.Pattern;
+
 public class Delimiter {
 
     private final String value;
@@ -14,6 +16,11 @@ public class Delimiter {
     public static Delimiter of(String value) {
 
         return new Delimiter(value);
+    }
+
+    public String getRegexPattern() {
+
+        return Pattern.quote(value);
     }
 
     private void validateDelimiterFormat(String value) {

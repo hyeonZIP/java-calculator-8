@@ -23,6 +23,11 @@ public class ParsedInput {
         return createDefault(userInput);
     }
 
+    public String[] split(){
+
+        return delimiters.split(expression);
+    }
+
     private static ParsedInput createDefault(String userInput) {
 
         Delimiters delimiters = Delimiters.ofDefault();

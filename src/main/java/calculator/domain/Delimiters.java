@@ -2,9 +2,11 @@ package calculator.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Delimiters {
-    
+
+    private static final String OR = "|";
     private static final String COMMA = ",";
     private static final String COLON = ":";
     private static final List<Delimiter> DEFAULT_DELIMITERS = List.of(
@@ -31,5 +33,14 @@ public class Delimiters {
         customDelimiters.addFirst(Delimiter.of(customDelimiter));
 
         return new Delimiters(customDelimiters);
+    }
+
+    public String[] split(String userInput) {
+
+        String regex = delimiters.stream()
+                .map(Delimiter::getRegexPattern)
+                .collect(Collectors.joining(OR));
+
+        return userInput.split(regex);
     }
 }

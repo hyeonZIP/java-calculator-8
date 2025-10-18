@@ -10,6 +10,8 @@ public class CalculatorService {
 
         ParsedInput parsedInput = ParsedInput.of(userInput);
 
+        String[] userInputSplit = parsedInput.split();
+
         return result;
     }
 }
