@@ -15,7 +15,7 @@ public class CustomDelimiterExtractor {
 
     public String extractCustomDelimiter(String userInput) {
 
-        int startIndex = userInput.indexOf(CUSTOM_DELIMITER_PREFIX) + 2;
+        int startIndex = userInput.indexOf(CUSTOM_DELIMITER_PREFIX) + CUSTOM_DELIMITER_PREFIX.length();
         int endIndex = userInput.indexOf(CUSTOM_DELIMITER_SUFFIX);
 
         return userInput.substring(startIndex, endIndex);
