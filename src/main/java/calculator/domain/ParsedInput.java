@@ -30,6 +30,11 @@ public class ParsedInput {
         return delimiters.split(expression);
     }
 
+    public boolean hasExpression(){
+
+        return !expression.isBlank();
+    }
+
     private static ParsedInput createDefault(String userInput) {
 
         Delimiters delimiters = Delimiters.ofDefault();
