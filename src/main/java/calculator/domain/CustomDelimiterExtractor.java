@@ -25,4 +25,11 @@ public class CustomDelimiterExtractor {
 
         return userInput.startsWith(CUSTOM_DELIMITER_PREFIX) && userInput.contains(CUSTOM_DELIMITER_SUFFIX);
     }
+
+    public String extractExpression(String userInput) {
+
+        int endIndex = userInput.indexOf(CUSTOM_DELIMITER_SUFFIX) + CUSTOM_DELIMITER_SUFFIX.length();
+
+        return userInput.substring(endIndex);
+    }
 }
