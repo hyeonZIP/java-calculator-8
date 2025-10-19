@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import calculator.exception.ExceptionMessage;
+
 public class Number {
 
     private static final int ZERO = 0;
@@ -38,7 +40,7 @@ public class Number {
 
         if (value.isBlank()) {
 
-            throw new IllegalArgumentException("[ERROR] 파싱할 숫자가 공백입니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_IS_BLANK.getMessage());
         }
     }
 
@@ -46,7 +48,7 @@ public class Number {
 
         if (Integer.parseInt(value) <= ZERO) {
 
-            throw new IllegalArgumentException("[ERROR] 파싱할 숫자가 양수가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
         }
     }
 
@@ -54,7 +56,7 @@ public class Number {
 
         if (value == null) {
 
-            throw new IllegalArgumentException("[ERROR] 파싱할 숫자가 null 입니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_IS_NULL.getMessage());
         }
     }
 
@@ -63,7 +65,7 @@ public class Number {
         try {
             Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 문자는 정수로 파싱할 수 없습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_INVALID_FORMAT.getMessage());
         }
     }
 }

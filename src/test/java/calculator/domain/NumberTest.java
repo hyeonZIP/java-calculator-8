@@ -2,6 +2,7 @@ package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import calculator.exception.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("null");
+                    .hasMessage(ExceptionMessage.NUMBER_IS_NULL.getMessage());
         }
 
         @Test
@@ -35,7 +36,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("문자");
+                    .hasMessage(ExceptionMessage.NUMBER_INVALID_FORMAT.getMessage());
         }
 
         @Test
@@ -48,7 +49,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("공백");
+                    .hasMessage(ExceptionMessage.NUMBER_IS_BLANK.getMessage());
         }
 
         @Test
@@ -61,7 +62,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("양수");
+                    .hasMessage(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
         }
 
         @Test
@@ -74,7 +75,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("양수");
+                    .hasMessage(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
         }
     }
 }

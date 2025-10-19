@@ -2,6 +2,7 @@ package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import calculator.exception.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ class DelimiterTest {
 
             assertThatThrownBy(() -> Delimiter.of(null))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("null");
+                    .hasMessage(ExceptionMessage.DELIMITER_IS_NULL.getMessage());
         }
 
         @ParameterizedTest
@@ -30,7 +31,7 @@ class DelimiterTest {
 
             assertThatThrownBy(() -> Delimiter.of(value))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("공백");
+                    .hasMessage(ExceptionMessage.DELIMITER_IS_BLANK.getMessage());
         }
 
         @ParameterizedTest
@@ -40,7 +41,7 @@ class DelimiterTest {
 
             assertThatThrownBy(() -> Delimiter.of(value))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("숫자");
+                    .hasMessage(ExceptionMessage.DELIMITER_CONTAINS_DIGIT.getMessage());
         }
     }
 }

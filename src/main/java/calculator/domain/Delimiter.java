@@ -1,5 +1,6 @@
 package calculator.domain;
 
+import calculator.exception.ExceptionMessage;
 import java.util.regex.Pattern;
 
 public class Delimiter {
@@ -36,7 +37,7 @@ public class Delimiter {
 
         if (value.isBlank()) {
 
-            throw new IllegalArgumentException("[ERROR] 구분자는 공백일 수 없습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.DELIMITER_IS_BLANK.getMessage());
         }
     }
 
@@ -46,7 +47,7 @@ public class Delimiter {
 
             if (Character.isDigit(singleWord)) {
 
-                throw new IllegalArgumentException("[ERROR] 구분자는 숫자일 수 없습니다.");
+                throw new IllegalArgumentException(ExceptionMessage.DELIMITER_CONTAINS_DIGIT.getMessage());
             }
         }
     }
@@ -55,7 +56,7 @@ public class Delimiter {
 
         if (value == null) {
 
-            throw new IllegalArgumentException("[ERROR] 구분자는 null 일 수 없습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.DELIMITER_IS_NULL.getMessage());
         }
     }
 }
