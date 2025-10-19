@@ -2,6 +2,7 @@ package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigInteger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ class NumbersTest {
         Numbers numbers = Numbers.of(userInputSplit);
 
         //when
-        int result = numbers.addAll();
+        BigInteger result = numbers.addAll();
 
         //then
         assertThat(result).isEqualTo(6);

@@ -3,6 +3,7 @@ package calculator.controller;
 import calculator.service.CalculatorService;
 import calculator.view.InputView;
 import calculator.view.OutputView;
+import java.math.BigInteger;
 
 public class CalculatorController {
 
@@ -26,7 +27,7 @@ public class CalculatorController {
         String userInput = inputView.getUserInput();
 
         // 덧셈 결과 받기
-        int result = calculatorService.getResult(userInput);
+        BigInteger result = calculatorService.getResult(userInput);
 
         // 덧셈 결과 출력
         outputView.printAddResult(result);

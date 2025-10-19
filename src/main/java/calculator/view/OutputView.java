@@ -1,5 +1,7 @@
 package calculator.view;
 
+import java.math.BigInteger;
+
 public class OutputView {
 
     private static final String INTRO_MESSAGE = "덧셈할 문자열을 입력해 주세요.";
@@ -10,7 +12,7 @@ public class OutputView {
         System.out.println(INTRO_MESSAGE);
     }
 
-    public void printAddResult(int result) {
+    public void printAddResult(BigInteger result) {
 
         System.out.println(OUTRO_MESSAGE + result);
     }

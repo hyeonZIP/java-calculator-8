@@ -1,18 +1,19 @@
 package calculator.domain;
 
 import calculator.exception.ExceptionMessage;
+import java.math.BigInteger;
 
 public class Number {
 
-    private static final int ZERO = 0;
+    private static final BigInteger ZERO = BigInteger.ZERO;
 
-    private final int value;
+    private final BigInteger value;
 
     private Number(String value) {
 
         validateNumber(value);
 
-        this.value = Integer.parseInt(value);
+        this.value = new BigInteger(value);
     }
 
     public static Number of(String userInputSplit) {
@@ -20,7 +21,7 @@ public class Number {
         return new Number(userInputSplit);
     }
 
-    public int getValue() {
+    public BigInteger getValue() {
 
         return value;
     }
@@ -46,7 +47,9 @@ public class Number {
 
     private static void validateNumberIsNotPositive(String value) {
 
-        if (Integer.parseInt(value) <= ZERO) {
+        BigInteger number = new BigInteger(value);
+
+        if (number.compareTo(ZERO) <= 0) {
 
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
         }
@@ -63,7 +66,7 @@ public class Number {
     private static void validateNumberIsNotDigit(String value) {
 
         try {
-            Integer.parseInt(value);
+            new BigInteger(value);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_INVALID_FORMAT.getMessage());
         }

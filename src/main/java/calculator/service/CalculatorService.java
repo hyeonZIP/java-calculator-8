@@ -2,10 +2,11 @@ package calculator.service;
 
 import calculator.domain.Numbers;
 import calculator.domain.ParsedInput;
+import java.math.BigInteger;
 
 public class CalculatorService {
 
-    public int getResult(String userInput) {
+    public BigInteger getResult(String userInput) {
 
         // 사용자 입력에 따른 사용할 구분자 목록과 표현식으로 파싱
         ParsedInput parsedInput = ParsedInput.of(userInput);
@@ -23,6 +24,6 @@ public class CalculatorService {
             return parsedUserInput.addAll();
         }
 
-        return 0;
+        return BigInteger.ZERO;
     }
 }

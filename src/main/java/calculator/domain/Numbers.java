@@ -1,5 +1,6 @@
 package calculator.domain;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,13 @@ public class Numbers {
         return new Numbers(numbers);
     }
 
-    public int addAll() {
+    public BigInteger addAll() {
 
-        int result = 0;
+        BigInteger result = BigInteger.ZERO;
 
         for (Number number : numbers) {
 
-            result += number.getValue();
+            result = result.add(number.getValue());
         }
 
         return result;
