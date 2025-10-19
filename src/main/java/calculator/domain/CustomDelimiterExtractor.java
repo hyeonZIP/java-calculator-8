@@ -2,15 +2,16 @@ package calculator.domain;
 
 public class CustomDelimiterExtractor {
 
+    private static final CustomDelimiterExtractor SINGLETON_INSTANCE = new CustomDelimiterExtractor();
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
     private static final String CUSTOM_DELIMITER_SUFFIX = "\\n";
 
     private CustomDelimiterExtractor() {
     }
 
-    public static CustomDelimiterExtractor of() {
+    public static CustomDelimiterExtractor getInstance() {
 
-        return new CustomDelimiterExtractor();
+        return SINGLETON_INSTANCE;
     }
 
     public String extractCustomDelimiter(String userInput) {

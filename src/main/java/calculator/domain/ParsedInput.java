@@ -13,7 +13,7 @@ public class ParsedInput {
 
     public static ParsedInput of(String userInput) {
 
-        CustomDelimiterExtractor extractor = CustomDelimiterExtractor.of();
+        CustomDelimiterExtractor extractor = CustomDelimiterExtractor.getInstance();
 
         if (extractor.hasCustomDelimiterFormat(userInput)) {
 
@@ -30,7 +30,7 @@ public class ParsedInput {
         return delimiters.split(expression);
     }
 
-    public boolean hasExpression(){
+    public boolean hasExpression() {
 
         return !expression.isBlank();
     }

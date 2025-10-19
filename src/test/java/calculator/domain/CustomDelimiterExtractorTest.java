@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CustomDelimiterExtractorTest {
 
-    private final CustomDelimiterExtractor extractor = CustomDelimiterExtractor.of();
+    private final CustomDelimiterExtractor extractor = CustomDelimiterExtractor.getInstance();
 
     @Nested
     @DisplayName("성공 케이스")
