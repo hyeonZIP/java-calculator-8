@@ -21,7 +21,7 @@ class DelimiterTest {
 
             assertThatThrownBy(() -> Delimiter.of(null))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ExceptionMessage.DELIMITER_IS_NULL.getMessage());
+                    .hasMessage(ExceptionMessage.DELIMITER_IS_BLANK.getMessage());
         }
 
         @ParameterizedTest

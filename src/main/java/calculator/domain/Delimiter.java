@@ -2,6 +2,7 @@ package calculator.domain;
 
 import calculator.exception.ExceptionMessage;
 import java.util.regex.Pattern;
+import org.junit.platform.commons.util.StringUtils;
 
 public class Delimiter {
 
@@ -26,8 +27,6 @@ public class Delimiter {
 
     private void validateDelimiterFormat(String value) {
 
-        validateDelimiterIsNotNull(value);
-
         validateDelimiterIsNotBlank(value);
 
         validateDelimiterIsNotDigit(value);
@@ -35,7 +34,7 @@ public class Delimiter {
 
     private void validateDelimiterIsNotBlank(String value) {
 
-        if (value.isBlank()) {
+        if (StringUtils.isBlank(value)) {
 
             throw new IllegalArgumentException(ExceptionMessage.DELIMITER_IS_BLANK.getMessage());
         }
@@ -49,14 +48,6 @@ public class Delimiter {
 
                 throw new IllegalArgumentException(ExceptionMessage.DELIMITER_CONTAINS_DIGIT.getMessage());
             }
-        }
-    }
-
-    private void validateDelimiterIsNotNull(String value) {
-
-        if (value == null) {
-
-            throw new IllegalArgumentException(ExceptionMessage.DELIMITER_IS_NULL.getMessage());
         }
     }
 }

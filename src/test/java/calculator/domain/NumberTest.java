@@ -23,7 +23,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ExceptionMessage.NUMBER_IS_NULL.getMessage());
+                    .hasMessage(ExceptionMessage.NUMBER_IS_BLANK.getMessage());
         }
 
         @Test

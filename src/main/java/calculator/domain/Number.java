@@ -2,6 +2,7 @@ package calculator.domain;
 
 import calculator.exception.ExceptionMessage;
 import java.math.BigInteger;
+import org.junit.platform.commons.util.StringUtils;
 
 public class Number {
 
@@ -28,8 +29,6 @@ public class Number {
 
     private static void validateNumber(String value) {
 
-        validateNumberIsNotNull(value);
-
         validateNumberIsNotBlank(value);
 
         validateNumberIsNotDigit(value);
@@ -39,7 +38,7 @@ public class Number {
 
     private static void validateNumberIsNotBlank(String value) {
 
-        if (value.isBlank()) {
+        if (StringUtils.isBlank(value)) {
 
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_IS_BLANK.getMessage());
         }
@@ -52,14 +51,6 @@ public class Number {
         if (number.compareTo(ZERO) <= 0) {
 
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
-        }
-    }
-
-    private static void validateNumberIsNotNull(String value) {
-
-        if (value == null) {
-
-            throw new IllegalArgumentException(ExceptionMessage.NUMBER_IS_NULL.getMessage());
         }
     }
 
