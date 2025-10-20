@@ -1,6 +1,6 @@
 package calculator.controller;
 
-import calculator.domain.ParsedInput;
+import calculator.domain.StringCalculator;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 import java.math.BigInteger;
@@ -25,7 +25,7 @@ public class CalculatorController {
         String userInput = inputView.getUserInput();
 
         // 덧셈 결과 받기
-        BigInteger result = ParsedInput.of(userInput).calculate();
+        BigInteger result = StringCalculator.of(userInput).calculate();
 
         // 덧셈 결과 출력
         outputView.printAddResult(result);

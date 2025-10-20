@@ -3,18 +3,18 @@ package calculator.domain;
 import java.math.BigInteger;
 import org.junit.platform.commons.util.StringUtils;
 
-public class ParsedInput {
+public class StringCalculator {
 
     private final String expression;
     private final Delimiters delimiters;
 
-    private ParsedInput(String expression, Delimiters delimiters) {
+    private StringCalculator(String expression, Delimiters delimiters) {
 
         this.expression = expression;
         this.delimiters = delimiters;
     }
 
-    public static ParsedInput of(String userInput) {
+    public static StringCalculator of(String userInput) {
 
         CustomDelimiterExtractor extractor = CustomDelimiterExtractor.getInstance();
 
@@ -51,14 +51,14 @@ public class ParsedInput {
         return StringUtils.isBlank(expression);
     }
 
-    private static ParsedInput createDefault(String userInput) {
+    private static StringCalculator createDefault(String userInput) {
 
         Delimiters delimiters = Delimiters.ofDefault();
 
-        return new ParsedInput(userInput, delimiters);
+        return new StringCalculator(userInput, delimiters);
     }
 
-    private static ParsedInput createForCustomDelimiter(String userInput, CustomDelimiterExtractor extractor) {
+    private static StringCalculator createForCustomDelimiter(String userInput, CustomDelimiterExtractor extractor) {
 
         // 사용자 입력에서 커스텀 구분자 추출
         String customDelimiter = extractor.extractCustomDelimiter(userInput);
@@ -69,6 +69,6 @@ public class ParsedInput {
         // 사용자 입력에서 커스텀 구분자 부분을 제외하여 표현식 추출
         String expression = extractor.extractExpression(userInput);
 
-        return new ParsedInput(expression, delimiters);
+        return new StringCalculator(expression, delimiters);
     }
 }
