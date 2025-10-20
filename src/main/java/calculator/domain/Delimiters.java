@@ -41,6 +41,6 @@ public class Delimiters {
                 .map(Delimiter::getRegexPattern)
                 .collect(Collectors.joining(OR));
 
-        return userInput.split(regex);
+        return userInput.split(regex, -1);
     }
 }
