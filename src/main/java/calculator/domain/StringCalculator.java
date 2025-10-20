@@ -36,14 +36,14 @@ public class StringCalculator {
             return BigInteger.ZERO;
         }
 
-        // 파싱된 표현식과 구분자로 분리
+        // 파싱된 표현식을 구분자로 분리
         ExpressionTokens expressionTokens = delimiters.split(expression);
 
-        // 분리된 표현식을 양수로 파싱
-        Numbers parsedUserInput = Numbers.of(expressionTokens.toNumber());
+        // 분리된 표현식을 정수로 파싱
+        Numbers numbers = Numbers.of(expressionTokens.toNumber());
 
         // 파싱된 양수들의 합산 결과 반환
-        return parsedUserInput.addAll();
+        return numbers.addAll();
     }
 
     private boolean isExpressionBlank() {
