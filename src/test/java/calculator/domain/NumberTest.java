@@ -36,7 +36,7 @@ class NumberTest {
             //when & then
             assertThatThrownBy(() -> Numbers.of(userInputSplit))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ExceptionMessage.NUMBER_INVALID_FORMAT.getMessage());
+                    .hasMessage(ExceptionMessage.NUMBER_IS_INVALID_FORMAT.getMessage());
         }
 
         @Test

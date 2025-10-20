@@ -59,7 +59,7 @@ public class Number {
         try {
             new BigInteger(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessage.NUMBER_INVALID_FORMAT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_IS_INVALID_FORMAT.getMessage());
         }
     }
 }
