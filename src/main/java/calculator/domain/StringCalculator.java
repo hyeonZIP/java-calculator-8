@@ -37,10 +37,10 @@ public class StringCalculator {
         }
 
         // 파싱된 표현식과 구분자로 분리
-        String[] userInputSplit = delimiters.split(expression);
+        ExpressionTokens expressionTokens = delimiters.split(expression);
 
         // 분리된 표현식을 양수로 파싱
-        Numbers parsedUserInput = Numbers.of(userInputSplit);
+        Numbers parsedUserInput = Numbers.of(expressionTokens.toNumber());
 
         // 파싱된 양수들의 합산 결과 반환
         return parsedUserInput.addAll();

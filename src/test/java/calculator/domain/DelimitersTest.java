@@ -20,12 +20,13 @@ class DelimitersTest {
             String customDelimiter = "$";
             String expression = "1,2$3";
             Delimiters delimiters = Delimiters.ofCustom(customDelimiter);
+            ExpressionTokens expected = ExpressionTokens.of(new String[]{"1", "2", "3"});
 
             //when
-            String[] result = delimiters.split(expression);
+            ExpressionTokens result = delimiters.split(expression);
 
             //then
-            assertThat(result).isEqualTo(new String[]{"1", "2", "3"});
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -40,12 +41,13 @@ class DelimitersTest {
             //given
             String expression = "1,2:3";
             Delimiters delimiters = Delimiters.ofDefault();
+            ExpressionTokens expected = ExpressionTokens.of(new String[]{"1", "2", "3"});
 
             //when
-            String[] result = delimiters.split(expression);
+            ExpressionTokens result = delimiters.split(expression);
 
             //then
-            assertThat(result).isEqualTo(new String[]{"1", "2", "3"});
+            assertThat(result).isEqualTo(expected);
         }
     }
 }

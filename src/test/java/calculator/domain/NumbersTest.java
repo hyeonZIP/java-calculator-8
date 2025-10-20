@@ -14,7 +14,8 @@ class NumbersTest {
 
         //given
         String[] userInputSplit = new String[]{"1", "2", "3"};
-        Numbers numbers = Numbers.of(userInputSplit);
+        ExpressionTokens expressionTokens = ExpressionTokens.of(userInputSplit);
+        Numbers numbers = Numbers.of(expressionTokens.toNumber());
 
         //when
         BigInteger result = numbers.addAll();

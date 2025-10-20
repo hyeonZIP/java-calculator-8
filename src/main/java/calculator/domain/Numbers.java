@@ -13,14 +13,7 @@ public class Numbers {
         this.numbers = new ArrayList<>(numbers);
     }
 
-    public static Numbers of(String[] userInputSplit) {
-
-        List<Number> numbers = new ArrayList<>();
-
-        for (String singleWord : userInputSplit) {
-
-            numbers.add(Number.of(singleWord));
-        }
+    public static Numbers of(List<Number> numbers) {
 
         return new Numbers(numbers);
     }

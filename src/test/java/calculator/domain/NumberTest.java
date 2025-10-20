@@ -18,10 +18,10 @@ class NumberTest {
         public void nullNumberTest() {
 
             //given
-            String[] userInputSplit = new String[]{"1", "2", null, "4"};
+            ExpressionTokens expressionTokens = ExpressionTokens.of(new String[]{"1", "2", null, "4"});
 
             //when & then
-            assertThatThrownBy(() -> Numbers.of(userInputSplit))
+            assertThatThrownBy(() -> Numbers.of(expressionTokens.toNumber()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.NUMBER_IS_BLANK.getMessage());
         }
@@ -31,10 +31,10 @@ class NumberTest {
         public void notPositiveTest() {
 
             //given
-            String[] userInputSplit = new String[]{"1", "2", "나야 들기름", "4"};
+            ExpressionTokens expressionTokens = ExpressionTokens.of(new String[]{"1", "2", "나야 들기름", "4"});
 
             //when & then
-            assertThatThrownBy(() -> Numbers.of(userInputSplit))
+            assertThatThrownBy(() -> Numbers.of(expressionTokens.toNumber()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.NUMBER_IS_INVALID_FORMAT.getMessage());
         }
@@ -44,10 +44,10 @@ class NumberTest {
         public void nullBlankTest() {
 
             //given
-            String[] userInputSplit = new String[]{"1", "2", " ", "4"};
+            ExpressionTokens expressionTokens = ExpressionTokens.of(new String[]{"1", "2", " ", "4"});
 
             //when & then
-            assertThatThrownBy(() -> Numbers.of(userInputSplit))
+            assertThatThrownBy(() -> Numbers.of(expressionTokens.toNumber()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.NUMBER_IS_BLANK.getMessage());
         }
@@ -57,10 +57,10 @@ class NumberTest {
         public void notPositiveNumberTest() {
 
             //given
-            String[] userInputSplit = new String[]{"1", "2", "-3", "4"};
+            ExpressionTokens expressionTokens = ExpressionTokens.of(new String[]{"1", "2", "-3", "4"});
 
             //when & then
-            assertThatThrownBy(() -> Numbers.of(userInputSplit))
+            assertThatThrownBy(() -> Numbers.of(expressionTokens.toNumber()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
         }
@@ -70,10 +70,10 @@ class NumberTest {
         public void zeroNumberTest() {
 
             //given
-            String[] userInputSplit = new String[]{"1", "2", "0", "4"};
+            ExpressionTokens expressionTokens = ExpressionTokens.of(new String[]{"1", "2", "0", "4"});
 
             //when & then
-            assertThatThrownBy(() -> Numbers.of(userInputSplit))
+            assertThatThrownBy(() -> Numbers.of(expressionTokens.toNumber()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.NUMBER_MUST_BE_POSITIVE.getMessage());
         }

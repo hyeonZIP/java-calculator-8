@@ -35,12 +35,12 @@ public class Delimiters {
         return new Delimiters(customDelimiters);
     }
 
-    public String[] split(String userInput) {
+    public ExpressionTokens split(String userInput) {
 
         String regex = delimiters.stream()
                 .map(Delimiter::getRegexPattern)
                 .collect(Collectors.joining(OR));
 
-        return userInput.split(regex, -1);
+        return ExpressionTokens.of(userInput.split(regex, -1));
     }
 }
