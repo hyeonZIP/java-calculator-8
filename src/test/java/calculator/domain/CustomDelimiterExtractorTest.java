@@ -1,9 +1,12 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import calculator.exception.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -56,6 +59,50 @@ class CustomDelimiterExtractorTest {
         public void expressionExtractingTest(String value, String expected) {
 
             assertThat(extractor.extractExpression(value)).isEqualTo(expected);
+        }
+    }
+
+    @Nested
+    @DisplayName("실패 케이스")
+    public class Fail {
+
+        @Test
+        @DisplayName("접두사가 없는 문자열에서 커스텀 구분자를 추출하면 예외가 발생한다.")
+        public void customDelimiterPrefixTest() {
+
+            //given
+            String userInput = "/;\\n1,2,3";
+
+            //when & then
+            assertThatThrownBy(() -> extractor.extractCustomDelimiter(userInput))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ExceptionMessage.CUSTOM_DELIMITER_PREFIX_NOT_FOUND.getMessage());
+        }
+
+        @Test
+        @DisplayName("접미사가 없는 문자열에서 표현식을 추출하면 예외가 발생한다.")
+        public void customDelimiterSuffixTest() {
+
+            //given
+            String userInput = "/;\n1,2,3";
+
+            //when & then
+            assertThatThrownBy(() -> extractor.extractCustomDelimiter(userInput))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ExceptionMessage.CUSTOM_DELIMITER_SUFFIX_NOT_FOUND.getMessage());
+        }
+
+        @Test
+        @DisplayName("접미사가 없는 문자열에서 표현식을 추출하면 예외가 발생한다.")
+        public void expressionSuffixTest() {
+
+            //given
+            String userInput = "//;\n1,2,3";
+
+            //when & then
+            assertThatThrownBy(() -> extractor.extractExpression(userInput))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ExceptionMessage.CUSTOM_DELIMITER_SUFFIX_NOT_FOUND.getMessage());
         }
     }
 }
