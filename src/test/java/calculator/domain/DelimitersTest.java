@@ -17,11 +17,12 @@ class DelimitersTest {
         public void customDelimiterTest() {
 
             //given
-            String userInput = "//$\\n1,2:3";
-            ParsedInput parsedInput = ParsedInput.of(userInput);
+            String customDelimiter = "$";
+            String expression = "1,2$3";
+            Delimiters delimiters = Delimiters.ofCustom(customDelimiter);
 
             //when
-            String[] result = parsedInput.split();
+            String[] result = delimiters.split(expression);
 
             //then
             assertThat(result).isEqualTo(new String[]{"1", "2", "3"});
@@ -37,11 +38,11 @@ class DelimitersTest {
         public void defaultDelimiterTest() {
 
             //given
-            String userInput = "1,2:3";
-            ParsedInput parsedInput = ParsedInput.of(userInput);
+            String expression = "1,2:3";
+            Delimiters delimiters = Delimiters.ofDefault();
 
             //when
-            String[] result = parsedInput.split();
+            String[] result = delimiters.split(expression);
 
             //then
             assertThat(result).isEqualTo(new String[]{"1", "2", "3"});
